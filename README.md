@@ -11,15 +11,15 @@ The App functions by running any file from given directory, a ui opens up with l
 
 The user also has the option of registering. 
 
-![login msg](https://github.com/gm737/JAVA-Bank-App/assets/174362613/462e79a6-59d7-4d3c-8968-c13d86361df4)
+![register](https://github.com/gm737/JAVA-Bank-App/assets/174362613/b8bf85f6-af80-4359-9026-dc7e620e6413)
 
 
 Username and password have a set of rules where for the username the app checks if the name is available or not
 and for the password to be at least 8 characters long including numbers and symbols.
 
-For this demonstration i have created an Account with name of JWalker and an 8 character Password
+For this demonstration i have created an Account with name of Max Mustermann and an 8 character Password
 
-![register frm fillin](https://github.com/gm737/JAVA-Bank-App/assets/174362613/4aa1717f-d78b-4165-8605-4d52acddb19d)
+![rgstr fli](https://github.com/gm737/JAVA-Bank-App/assets/174362613/5aea2e87-fcad-4616-ad66-41627a472dd4)
 
 
 If the username is not already in use, then a message shows that the account was succesfuly created.
