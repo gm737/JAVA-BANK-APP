@@ -19,3 +19,7 @@ and for the password to be at least 8 characters long including numbers and symb
 after succesfully logging in, a message appeares confirming the login.
 
 ![Screenshot 2024-07-04 074838](https://github.com/gm737/JAVA-Bank-App/assets/174362613/16a53e1f-6c90-4e44-8290-279384e1a42f)
+
+In the main Menu different Options are available, such as depositing, withdrawl, viewing past transactions, transferring and to logout.
+
+![Screenshot 2024-07-04 074903](https://github.com/gm737/JAVA-Bank-App/assets/174362613/debd4d5a-70d2-43ac-b7a7-793d7d0d8f42)
