@@ -22,4 +22,5 @@ after succesfully logging in, a message appeares confirming the login.
 
 In the main Menu different Options are available, such as depositing, withdrawl, viewing past transactions, transferring and to logout.
 
-![Screenshot 2024-07-04 074903](https://github.com/gm737/JAVA-Bank-App/assets/174362613/debd4d5a-70d2-43ac-b7a7-793d7d0d8f42)
+
+![Screenshot 2024-07-04 100928](https://github.com/gm737/JAVA-Bank-App/assets/174362613/3f494a89-9986-4b61-81bc-11c88395959d)
