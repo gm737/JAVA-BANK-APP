@@ -11,6 +11,7 @@ The App functions by running any file from given directory, a ui opens up with l
 
 The user also has the option of registering. 
 
+![login msg](https://github.com/gm737/JAVA-Bank-App/assets/174362613/462e79a6-59d7-4d3c-8968-c13d86361df4)
 
 
 Username and password have a set of rules where for the username the app checks if the name is available or not
@@ -18,7 +19,6 @@ and for the password to be at least 8 characters long including numbers and symb
 
 after succesfully logging in, a message appeares confirming the login.
 
-![Screenshot 2024-07-04 074838](https://github.com/gm737/JAVA-Bank-App/assets/174362613/16a53e1f-6c90-4e44-8290-279384e1a42f)
 
 The  main menu displays a greeting message followed by the username and current balance.
 
