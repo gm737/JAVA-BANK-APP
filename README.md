@@ -61,6 +61,27 @@ If the deposit was succesful, an message conforming the deposit will be displaye
 
 ![deposit updated balance](https://github.com/gm737/JAVA-Bank-App/assets/174362613/0b22173b-de0a-4b1f-8857-b495397890ee)
 
+When no value is entered and the user tries to deposit, an error message appears.
+
+
+Next, we have the withdraw function.
+The user can withdraw any amount of money as long as it is less than the current balance.
+
+![withdraw](https://github.com/gm737/JAVA-Bank-App/assets/174362613/5c181bc9-21a0-4a20-8d8d-7dd92aeada72)
+
+
+If the user tries to withdraw more than available, an error message appears.
+
+
+![withdraw error](https://github.com/gm737/JAVA-Bank-App/assets/174362613/39ef4091-7443-410a-81ab-497bc1dc7576)
+
+Once an correct amount has been drawn, the transaction will be confirmed.
+
+![withdraw succes](https://github.com/gm737/JAVA-Bank-App/assets/174362613/a3f12b9e-d9ca-407a-9cec-453c4f505bdf)
+
+
+
+
 
 
 
