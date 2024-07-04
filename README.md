@@ -44,3 +44,21 @@ For functionality ther are different Options available, such as depositing, with
 
 
 ![Screenshot 2024-07-04 100928](https://github.com/gm737/JAVA-Bank-App/assets/174362613/3f494a89-9986-4b61-81bc-11c88395959d)
+
+
+Starting at the top we have the function "deposit" which will deposit the amount of money entered to the user's account.
+
+![deposit ](https://github.com/gm737/JAVA-Bank-App/assets/174362613/b6f15bbc-a07c-4934-b8d4-6e9716ac37bf)
+
+
+The amount of money has to be of valid input, otherwise an error message will be displayed.
+
+If the deposit was succesful, an message conforming the deposit will be displayed and the current balance will be updated.
+
+![deposit succes message](https://github.com/gm737/JAVA-Bank-App/assets/174362613/bd303075-7a10-438a-815d-14af267f60eb)
+
+![deposit updated balance](https://github.com/gm737/JAVA-Bank-App/assets/174362613/0b22173b-de0a-4b1f-8857-b495397890ee)
+
+
+
+
