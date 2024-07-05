@@ -55,6 +55,9 @@ Starting at the top we have the function "deposit" which will deposit the amount
 
 The amount of money has to be of valid input, otherwise an error message will be displayed.
 
+![invalid input](https://github.com/gm737/JAVA-Bank-App/assets/174362613/a8ee69dc-0303-4a23-b3b7-c64329c03754)
+
+
 If the deposit was succesful, an message conforming the deposit will be displayed and the current balance will be updated.
 
 ![deposit succes message](https://github.com/gm737/JAVA-Bank-App/assets/174362613/bd303075-7a10-438a-815d-14af267f60eb)
