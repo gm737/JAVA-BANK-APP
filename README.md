@@ -101,5 +101,15 @@ If the transaction is valid, the app also displays a message approving the trans
 
 ![transfer updated](https://github.com/gm737/JAVA-Bank-App/assets/174362613/eca13619-5c6f-4838-8521-15ec77a80b55)
 
+Last we have the "Last Transaction" function, displaying every transaction and the date the user has commited, 
+being any withdrawls,deposits,etc.
+
+![last transactions ](https://github.com/gm737/JAVA-Bank-App/assets/174362613/9f837ad8-e617-4e6c-a6b6-dcab6c302579)
+
+![last transactions 2 ](https://github.com/gm737/JAVA-Bank-App/assets/174362613/d41ad0f9-ccbd-4ef7-9e80-8d3363f78975)
+
+When the user is done using the app, they can either logout or close the app tab, the user will be logged out automatically.
+
+
 
 
