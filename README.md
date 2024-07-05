@@ -78,13 +78,28 @@ If the user tries to withdraw more than available, an error message appears.
 
 ![withdraw error](https://github.com/gm737/JAVA-Bank-App/assets/174362613/39ef4091-7443-410a-81ab-497bc1dc7576)
 
-Once an correct amount has been drawn, the transaction will be confirmed.
+Once an correct amount has been drawn, the transaction will be confirmed and the user balance updated.
 
 ![withdraw succes](https://github.com/gm737/JAVA-Bank-App/assets/174362613/a3f12b9e-d9ca-407a-9cec-453c4f505bdf)
 
 
+Next we have the function transfer which allows the user to transfer money to a different bank account.
+For this purpose i have created a second account named "Ute Mustermann".
+
+![transfer main](https://github.com/gm737/JAVA-Bank-App/assets/174362613/e69eb02a-ce34-4e61-9572-2a8f756fbdca)
+
+In order to commit any transfers, the user has type in the amount of money and the username which they want to transfer to.
+
+![transfer fill in](https://github.com/gm737/JAVA-Bank-App/assets/174362613/87a010d8-5af2-4615-bbd1-f9fc85c549fa)
+
+Here the app also checks if the amount of money is valid by comparing the transaction to the users current balance.
+
+If the transaction is valid, the app also displays a message approving the transaction and updates the users balance.
+
+![transfer succes](https://github.com/gm737/JAVA-Bank-App/assets/174362613/48d4f60d-9d6f-4bec-8d62-b8d055a9df51)
 
 
+![transfer updated](https://github.com/gm737/JAVA-Bank-App/assets/174362613/eca13619-5c6f-4838-8521-15ec77a80b55)
 
 
 
