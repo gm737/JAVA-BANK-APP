@@ -44,8 +44,8 @@ The current balance for every user is by default set to zero.
 
 For functionality ther are different Options available, such as depositing, withdrawing, viewing past transactions, transferring and to logout.
 
+![main](https://github.com/gm737/JAVA-Bank-App/assets/174362613/41547740-34f0-4b41-b430-bf14aebee541)
 
-![Screenshot 2024-07-04 100928](https://github.com/gm737/JAVA-Bank-App/assets/174362613/3f494a89-9986-4b61-81bc-11c88395959d)
 
 
 Starting at the top we have the function "deposit" which will deposit the amount of money entered to the user's account.
