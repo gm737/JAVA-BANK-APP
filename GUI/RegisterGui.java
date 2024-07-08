@@ -4,8 +4,8 @@ import javax.swing.*;
 
 //import org.w3c.dom.events.MouseEvent;
 
-public class RegisterGui extends BaseFrame{
-    public RegisterGui(){
+public class REGISTERGUI extends BASEFRAME{
+    public REGISTERGUI(){
         super("Banking App Register");
     }
 
@@ -87,21 +87,21 @@ public class RegisterGui extends BaseFrame{
                     if(MyJDBC.register(username, password)){
                         // register success
                         // dispose of this gui
-                        RegisterGui.this.dispose();
+                        REGISTERGUI.this.dispose();
 
                         // launch the login gui
-                        LoginGui loginGui = new LoginGui();
-                        loginGui.setVisible(true);
+                        LOGINGUI LOGINGUI = new LOGINGUI();
+                        LOGINGUI.setVisible(true);
 
                         // create a result dialog
-                        JOptionPane.showMessageDialog(loginGui, "Registered Account Successfully!");
+                        JOptionPane.showMessageDialog(LOGINGUI, "Registered Account Successfully!");
                     }else{
                         // register failed
-                        JOptionPane.showMessageDialog(RegisterGui.this, "Error: Username already taken");
+                        JOptionPane.showMessageDialog(REGISTERGUI.this, "Error: Username already taken");
                     }
                 }else{
                     // invalid user input
-                    JOptionPane.showMessageDialog(RegisterGui.this,
+                    JOptionPane.showMessageDialog(REGISTERGUI.this,
                             "Error: Username must be at least 6 characters\n" +
                             "and/or Password must match");
                 }
@@ -118,10 +118,10 @@ public class RegisterGui extends BaseFrame{
             @Override
             public void mouseClicked(MouseEvent e) {
                 // dispose of this gui
-                RegisterGui.this.dispose();
+                REGISTERGUI.this.dispose();
 
                 // launch the login gui
-                new LoginGui().setVisible(true);
+                new LOGINGUI().setVisible(true);
             }
         });
         add(loginLabel);

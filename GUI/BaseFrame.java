@@ -2,15 +2,15 @@
 
 import javax.swing.*;
 
-public abstract class BaseFrame extends JFrame{
+public abstract class BASEFRAME extends JFrame{
 
     protected User user;
 
-    public BaseFrame(String title)
+    public BASEFRAME(String title)
     {
         initialize(title);
     }
-    public BaseFrame(String title, User user)
+    public BASEFRAME(String title, User user)
     {
         this.user=user;
 

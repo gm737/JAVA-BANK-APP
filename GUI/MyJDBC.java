@@ -35,7 +35,7 @@ public class MyJDBC {
         
                     // next() returns true or false
                     // true - query returned data and result set now points to the first row
-                    // false - query returned no data and result set equals to null
+                    // false - query returned no data and result set equals null
                     if(resultSet.next()){
                         // success
                         // get id
@@ -112,7 +112,7 @@ public class MyJDBC {
         
             // true - update to db was a success
             // false - update to the db was a fail
-            public static boolean addTransactionToDatabase(Transaction transaction){
+            public static boolean addTransactionToDatabase(TRANSACTION transaction){
                 try{
                     Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
         
@@ -175,7 +175,7 @@ public class MyJDBC {
                     ResultSet resultSet = queryUser.executeQuery();
         
                     while (resultSet.next()) {
-                        // perfrom transfer
+                        // perform transfer
                         User transferredUser = new User(
                                 resultSet.getInt("id"),
                                 transferredUsername,
@@ -184,7 +184,7 @@ public class MyJDBC {
                         );
         
                         // create transaction
-                        Transaction transferTransaction = new Transaction(
+                        TRANSACTION transferTransaction = new TRANSACTION(
                                 user.getId(),
                                 "Transfer",
                                 new BigDecimal(-transferAmount),
@@ -192,7 +192,7 @@ public class MyJDBC {
                         );
         
                         // this transaction will belong to the transferred user
-                        Transaction receivedTransaction = new Transaction(
+                        TRANSACTION receivedTransaction = new TRANSACTION(
                                 transferredUser.getId(),
                                 "Transfer",
                                 new BigDecimal(transferAmount),
@@ -216,14 +216,15 @@ public class MyJDBC {
                     }
                 }catch(SQLException e){
                     e.printStackTrace();
+                    
                 }
         
                 return false;
             }
         
             // get all transactions (used for past transaction)
-            public static ArrayList<Transaction> getPastTransaction(User user){
-                ArrayList<Transaction> pastTransactions = new ArrayList<>();
+            public static ArrayList<TRANSACTION> getPastTransaction(User user){
+                ArrayList<TRANSACTION> pastTransactions = new ArrayList<>();
                 try{
                     Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
         
@@ -237,7 +238,7 @@ public class MyJDBC {
                     // iterate throught the results (if any)
                     while(resultSet.next()){
                         // create transaction obj
-                        Transaction transaction = new Transaction(
+                        TRANSACTION transaction = new TRANSACTION(
                                 user.getId(),
                                 resultSet.getString("transaction_type"),
                                 resultSet.getBigDecimal("transaction_amount"),

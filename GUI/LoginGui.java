@@ -5,8 +5,8 @@ import java.awt.event.*;
 import javax.swing.*;
 
 
-public class LoginGui extends BaseFrame{
-    public LoginGui(){
+public class LOGINGUI extends BASEFRAME{
+    public LOGINGUI(){
         super("Banking App");
     }
 
@@ -52,14 +52,14 @@ public class LoginGui extends BaseFrame{
                 User user = MyJDBC.validateLogin(username, password);
 
                 if(user != null){
-                LoginGui.this.dispose();
-                BankingAppGui bankingAppGui = new BankingAppGui(user);
+                LOGINGUI.this.dispose();
+                BANKAPPGUI bankingAppGui = new BANKAPPGUI(user);
                 bankingAppGui.setVisible(true);
 
                 JOptionPane.showMessageDialog(bankingAppGui, "Login Succesful");
                 }
                 else{
-                    JOptionPane.showMessageDialog(LoginGui.this, "Login Failed");
+                    JOptionPane.showMessageDialog(LOGINGUI.this, "Login Failed");
                     
             }}  })  ;
         add(loginButton);
@@ -75,9 +75,9 @@ public class LoginGui extends BaseFrame{
             @Override
             public void mouseClicked(MouseEvent e)
             {
-                LoginGui.this.dispose();
+                LOGINGUI.this.dispose();
 
-                new RegisterGui().setVisible(true);
+                new REGISTERGUI().setVisible(true);
             }
         });
 

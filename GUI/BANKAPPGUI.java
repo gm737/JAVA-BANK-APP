@@ -3,12 +3,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
-public class BankingAppGui extends BaseFrame implements ActionListener{
+public class BANKAPPGUI extends BASEFRAME implements ActionListener{
     private JTextField currentBalanceField;
     public JTextField getCurrentBalanceField(){return currentBalanceField;}
 
-    public BankingAppGui(User user){
-        super("Banking App", user);
+    public BANKAPPGUI(User user){
+        super("Banking App",user);
     }
     @Override
     protected void addGuiComponents() {
@@ -81,7 +81,7 @@ public class BankingAppGui extends BaseFrame implements ActionListener{
         // user pressed logout
         if(buttonPressed.equalsIgnoreCase("Logout")){
             // return user to the login gui
-            new LoginGui().setVisible(true);
+            new LOGINGUI().setVisible(true);
 
             // dispose of this gui
             this.dispose();
@@ -91,7 +91,7 @@ public class BankingAppGui extends BaseFrame implements ActionListener{
         }
 
         // other functions
-        BankingAppDialog bankingAppDialog = new BankingAppDialog(this, user);
+        BANKAPPDIALOG bankingAppDialog = new BANKAPPDIALOG(this, user);
 
         // set the title of the dialog header to the action
         bankingAppDialog.setTitle(buttonPressed);

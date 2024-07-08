@@ -7,16 +7,16 @@ import java.util.ArrayList;
 import javax.swing.*;
 
 
-public class BankingAppDialog extends JDialog implements ActionListener {
+public class BANKAPPDIALOG extends JDialog implements ActionListener {
     private User user;
-    private BankingAppGui bankingAppGui;
+    private BANKAPPGUI bankingAppGui;
     private JLabel balanceLabel, enterAmountLabel, enterUserLabel;
     private JTextField enterAmountField, enterUserField;
     private JButton actionButton;
     private JPanel pastTransactionPanel;
-    private ArrayList<Transaction> pastTransactions;
+    private ArrayList<TRANSACTION> pastTransactions;
 
-    public BankingAppDialog(BankingAppGui bankingAppGui, User user){
+    public BANKAPPDIALOG(BANKAPPGUI bankingAppGui, User user){
       
         setSize(400, 400);
 
@@ -105,7 +105,7 @@ public class BankingAppDialog extends JDialog implements ActionListener {
     
         for(int i = 0; i < pastTransactions.size(); i++){
           
-            Transaction pastTransaction = pastTransactions.get(i);
+            TRANSACTION pastTransaction = pastTransactions.get(i);
 
             
             JPanel pastTransactionContainer = new JPanel();
@@ -143,7 +143,7 @@ public class BankingAppDialog extends JDialog implements ActionListener {
     }
 
     private void handleTransaction(String transactionType, float amountVal){
-        Transaction transaction;
+        TRANSACTION transaction;
 
         //if(enterAmountField.equalsIgnoreCase=="String"){}
         if(transactionType.equalsIgnoreCase("Deposit")){
@@ -154,14 +154,14 @@ public class BankingAppDialog extends JDialog implements ActionListener {
 
             // create transaction
             // we leave date null because we are going to be using the NOW() in sql which will get the current date
-            transaction = new Transaction(user.getId(), transactionType, new BigDecimal(amountVal), null);
+            transaction = new TRANSACTION(user.getId(), transactionType, new BigDecimal(amountVal), null);
         }else{
             // withdraw transaction type
             // subtract from current balance
             user.setCurrentBalance(user.getCurrentBalance().subtract(new BigDecimal(amountVal)));
 
             // we want to show a negative sign for the amount val when withdrawing
-            transaction = new Transaction(user.getId(), transactionType, new BigDecimal(-amountVal), null);
+            transaction = new TRANSACTION(user.getId(), transactionType, new BigDecimal(-amountVal), null);
         }
 
         // update database
@@ -212,18 +212,26 @@ public class BankingAppDialog extends JDialog implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         String buttonPressed = e.getActionCommand();
 
-        try{
+       try{
             String str = String.valueOf(enterAmountField);
             Integer num = Integer.valueOf(str);
-
-            if (num.equals(enterAmountField)){
-               
-            }
         }catch(NumberFormatException ex)
         {
             JOptionPane.showMessageDialog(this, "Error: Input value is not valid");
         }
      
+        /*if(enterAmountField.matches("^\\d+(\\.\\d+)?")) {
+            //okay
+          } else {
+            // not okay !
+          }
+
+          if(enterAmountField.nextInt()) {
+            //okay
+          } else {
+            // not okay !
+          }*/
+
 
         // get amount val
         float amountVal = Float.parseFloat(enterAmountField.getText());

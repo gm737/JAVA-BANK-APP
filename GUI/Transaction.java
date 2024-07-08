@@ -4,14 +4,14 @@ import java.sql.Date;
 
 
 
-public class Transaction {
+public class TRANSACTION {
     
     private final int userId;
     private final String transactionType;
     private final BigDecimal transactionAmount;
     private final Date transactionDate;
 
-    public Transaction(int userId, String  transactionType, BigDecimal transactionAmount, Date transactionDate){
+    public TRANSACTION(int userId, String  transactionType, BigDecimal transactionAmount, Date transactionDate){
 
         this.userId = userId;
         this.transactionType = transactionType;
