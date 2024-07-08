@@ -145,10 +145,12 @@ public class BankingAppDialog extends JDialog implements ActionListener {
     private void handleTransaction(String transactionType, float amountVal){
         Transaction transaction;
 
+        //if(enterAmountField.equalsIgnoreCase=="String"){}
         if(transactionType.equalsIgnoreCase("Deposit")){
             // deposit transaction type
             // add to current balance
             user.setCurrentBalance(user.getCurrentBalance().add(new BigDecimal(amountVal)));
+            
 
             // create transaction
             // we leave date null because we are going to be using the NOW() in sql which will get the current date
@@ -204,13 +206,30 @@ public class BankingAppDialog extends JDialog implements ActionListener {
         }
     }
 
+  
+
     @Override
     public void actionPerformed(ActionEvent e) {
         String buttonPressed = e.getActionCommand();
 
+        try{
+            String str = String.valueOf(enterAmountField);
+            Integer num = Integer.valueOf(str);
+
+            if (num.equals(enterAmountField)){
+               
+            }
+        }catch(NumberFormatException ex)
+        {
+            JOptionPane.showMessageDialog(this, "Error: Input value is not valid");
+        }
+     
+
         // get amount val
         float amountVal = Float.parseFloat(enterAmountField.getText());
+      
 
+        
         // pressed deposit
         if(buttonPressed.equalsIgnoreCase("Deposit")){
             // we want to handle the deposit transaction
@@ -218,27 +237,32 @@ public class BankingAppDialog extends JDialog implements ActionListener {
         }else{
             // pressed withdraw or transfer
 
-            // validate input by making sure that withdraw or transfer amount is less than current balance
-            // if result is -1 it means that the entered amount is more, 0 means they are equal, and 1 means that
+            // validate input by making sure that the withdraw or transfer amount is less than the current balance
+            // if the result is -1 it means that the entered amount is greater, 0 means they are equal and 1 means that
             // the entered amount is less
             int result = user.getCurrentBalance().compareTo(BigDecimal.valueOf(amountVal));
-            if(result < 0){
-                // display error dialog
+            if(result < 0) //&& result.equals(str)){
+            {
+                // display an error dialog
                 JOptionPane.showMessageDialog(this, "Error: Input value is more than current balance");
                 return;
             }
 
-            // check to see if withdraw or transfer was pressed
+            // check to see if the withdraw- or transferbutton was pressed
             if(buttonPressed.equalsIgnoreCase("Withdraw")){
                 handleTransaction(buttonPressed, amountVal);
             }else{
                 // transfer
                 String transferredUser = enterUserField.getText();
 
-                // handle transfer
+                
                 handleTransfer(user, transferredUser, amountVal);
             }
 
         }
     }
+    
+     
+
+   
 }
