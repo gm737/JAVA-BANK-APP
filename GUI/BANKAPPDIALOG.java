@@ -215,22 +215,14 @@ public class BANKAPPDIALOG extends JDialog implements ActionListener {
        try{
             String str = String.valueOf(enterAmountField);
             Integer num = Integer.valueOf(str);
+
+            if(num instanceof Integer){
+
+            }
         }catch(NumberFormatException ex)
         {
             JOptionPane.showMessageDialog(this, "Error: Input value is not valid");
         }
-     
-        /*if(enterAmountField.matches("^\\d+(\\.\\d+)?")) {
-            //okay
-          } else {
-            // not okay !
-          }
-
-          if(enterAmountField.nextInt()) {
-            //okay
-          } else {
-            // not okay !
-          }*/
 
 
         // get amount val
