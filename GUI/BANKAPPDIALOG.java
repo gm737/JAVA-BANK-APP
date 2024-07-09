@@ -37,6 +37,7 @@ public class BANKAPPDIALOG extends JDialog implements ActionListener {
 
       
         this.bankingAppGui = bankingAppGui;
+      
 
         
         this.user = user;
@@ -145,6 +146,8 @@ public class BANKAPPDIALOG extends JDialog implements ActionListener {
     private void handleTransaction(String transactionType, float amountVal){
         TRANSACTION transaction;
 
+        
+
         //if(enterAmountField.equalsIgnoreCase=="String"){}
         if(transactionType.equalsIgnoreCase("Deposit")){
             // deposit transaction type
@@ -164,17 +167,23 @@ public class BANKAPPDIALOG extends JDialog implements ActionListener {
             transaction = new TRANSACTION(user.getId(), transactionType, new BigDecimal(-amountVal), null);
         }
 
+      
         // update database
-        if(MyJDBC.addTransactionToDatabase(transaction) && MyJDBC.updateCurrentBalance(user)){
-            // show success dialog
-            JOptionPane.showMessageDialog(this, transactionType + " Successfully!");
+        if(amountVal<=0){
+            JOptionPane.showMessageDialog(this, "Error: Negative input is not valid");
+         }
+         else{
+            if(MyJDBC.addTransactionToDatabase(transaction) && MyJDBC.updateCurrentBalance(user)){
+                // show success dialog
+                JOptionPane.showMessageDialog(this, transactionType + " Successfully!");
 
-            // reset the fields
-            resetFieldsAndUpdateCurrentBalance();
-        }else{
-            // show failure dialog
-            JOptionPane.showMessageDialog(this, transactionType + " Failed...");
-        }
+                // reset the fields
+                resetFieldsAndUpdateCurrentBalance();
+            }else{
+                // show failure dialog
+                JOptionPane.showMessageDialog(this, transactionType + " Failed...");
+            }
+         }
 
     }
 
@@ -211,58 +220,53 @@ public class BANKAPPDIALOG extends JDialog implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         String buttonPressed = e.getActionCommand();
+       
+        try{
 
-       try{
-            String str = String.valueOf(enterAmountField);
-            Integer num = Integer.valueOf(str);
+            float amountVal = Float.parseFloat(enterAmountField.getText());
 
-            if(num instanceof Integer){
-
-            }
-        }catch(NumberFormatException ex)
-        {
-            JOptionPane.showMessageDialog(this, "Error: Input value is not valid");
-        }
-
-
-        // get amount val
-        float amountVal = Float.parseFloat(enterAmountField.getText());
-      
-
-        
-        // pressed deposit
-        if(buttonPressed.equalsIgnoreCase("Deposit")){
-            // we want to handle the deposit transaction
-            handleTransaction(buttonPressed, amountVal);
-        }else{
-            // pressed withdraw or transfer
-
-            // validate input by making sure that the withdraw or transfer amount is less than the current balance
-            // if the result is -1 it means that the entered amount is greater, 0 means they are equal and 1 means that
-            // the entered amount is less
-            int result = user.getCurrentBalance().compareTo(BigDecimal.valueOf(amountVal));
-            if(result < 0) //&& result.equals(str)){
-            {
-                // display an error dialog
-                JOptionPane.showMessageDialog(this, "Error: Input value is more than current balance");
-                return;
-            }
-
-            // check to see if the withdraw- or transferbutton was pressed
-            if(buttonPressed.equalsIgnoreCase("Withdraw")){
+            if(buttonPressed.equalsIgnoreCase("Deposit")){
+                // we want to handle the deposit transaction
                 handleTransaction(buttonPressed, amountVal);
+               
+               
             }else{
-                // transfer
-                String transferredUser = enterUserField.getText();
-
-                
-                handleTransfer(user, transferredUser, amountVal);
+                // pressed withdraw or transfer
+    
+                // validate input by making sure that the withdraw or transfer amount is less than the current balance
+                // if the result is -1 it means that the entered amount is greater, 0 means they are equal and 1 means that
+                // the entered amount is less
+                int result = user.getCurrentBalance().compareTo(BigDecimal.valueOf(amountVal));
+                if(result < 0)
+                {
+                    // display an error dialog
+                    JOptionPane.showMessageDialog(this, "Error: Input value is more than current balance");
+                    return;
+                }
+    
+                // check to see if the withdraw- or transferbutton was pressed
+                if(buttonPressed.equalsIgnoreCase("Withdraw")){
+                    handleTransaction(buttonPressed, amountVal);
+                }else{
+                    // transfer
+                    String transferredUser = enterUserField.getText();
+    
+                    
+                    handleTransfer(user, transferredUser, amountVal);
+                }
+    
             }
-
-        }
+        }catch(NumberFormatException Exception){
+               
+                JOptionPane.showMessageDialog(this, "Error: Invalid Input");
+            }      
+     
+      }
+      
+  
+       
     }
     
      
 
    
-}
