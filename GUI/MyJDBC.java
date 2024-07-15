@@ -17,34 +17,30 @@ public class MyJDBC {
 
         public static User validateLogin(String username, String password){
                 try{
-                    // establish a connection to the database using configurations
+               
                     Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
         
-                    // create sql query
+              
                     PreparedStatement preparedStatement = connection.prepareStatement(
                             "SELECT * FROM users WHERE username = ? AND password = ?"
                     );
         
-                    // replace the ? with values
-                    // parameter index referring to the iteration of the ? so 1 is the first ? and 2 is the second ?
+                    
                     preparedStatement.setString(1, username);
                     preparedStatement.setString(2, password);
         
-                    // execute query and store into a result set
+                    
                     ResultSet resultSet = preparedStatement.executeQuery();
         
-                    // next() returns true or false
-                    // true - query returned data and result set now points to the first row
-                    // false - query returned no data and result set equals null
+                   
                     if(resultSet.next()){
-                        // success
-                        // get id
+                       
                         int userId = resultSet.getInt("id");
         
-                        // get current balance
+                       
                         BigDecimal currentBalance = resultSet.getBigDecimal("current_balance");
         
-                        // return user object
+                        
                         return new User(userId, username, password, currentBalance);
                     }
         
@@ -52,16 +48,14 @@ public class MyJDBC {
                     e.printStackTrace();
                 }
         
-                // not valid user
+                
                 return null;
             }
         
-            // registers new user to the database
-            // true - register success
-            // false - register fails
+            
             public static boolean register(String username, String password){
                 try{
-                    // first we will need to check if the username has already been taken
+                    
                     if(!checkUser(username)){
                         Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
         
@@ -85,9 +79,7 @@ public class MyJDBC {
                 return false;
             }
         
-            // check if username already exists in the db
-            // true - user exists
-            // false - user doesn't exist
+           
             private static boolean checkUser(String username){
                 try{
                     Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
@@ -99,7 +91,7 @@ public class MyJDBC {
                     preparedStatement.setString(1, username);
                     ResultSet resultSet = preparedStatement.executeQuery();
         
-                    // this means that the query returned no data meaning that the username is available
+                    
                     if(!resultSet.next()){
                         return false;
                     }
@@ -110,8 +102,6 @@ public class MyJDBC {
                 return true;
             }
         
-            // true - update to db was a success
-            // false - update to the db was a fail
             public static boolean addTransactionToDatabase(TRANSACTION transaction){
                 try{
                     Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
@@ -120,13 +110,13 @@ public class MyJDBC {
                         "INSERT transactions(user_id, transaction_type, transaction_amount, transaction_date) " +
                                 "VALUES(?, ?, ?, NOW())"
                     );
-                    // NOW() will put in the current date
+                  
         
                     insertTransaction.setInt(1, transaction.getUserId());
                     insertTransaction.setString(2, transaction.getTransactionType());
                     insertTransaction.setBigDecimal(3, transaction.getTransactionAmount());
         
-                    // update database
+                  
                     insertTransaction.executeUpdate();
         
                     return true;
@@ -138,8 +128,7 @@ public class MyJDBC {
                 return false;
             }
         
-            // true - update balance successful
-            // false - update balance fail
+           
             public static boolean updateCurrentBalance(User user){
                 try{
                     Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
@@ -161,8 +150,7 @@ public class MyJDBC {
                 return false;
             }
         
-            // true - transfer was a success
-            // false - transfer was a fail
+     
             public static boolean transfer(User user, String transferredUsername, float transferAmount){
                 try{
                     Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
@@ -175,7 +163,7 @@ public class MyJDBC {
                     ResultSet resultSet = queryUser.executeQuery();
         
                     while (resultSet.next()) {
-                        // perform transfer
+                        
                         User transferredUser = new User(
                                 resultSet.getInt("id"),
                                 transferredUsername,
@@ -183,7 +171,7 @@ public class MyJDBC {
                                 resultSet.getBigDecimal("current_balance")
                         );
         
-                        // create transaction
+                       
                         TRANSACTION transferTransaction = new TRANSACTION(
                                 user.getId(),
                                 "Transfer",
@@ -191,7 +179,7 @@ public class MyJDBC {
                                 null
                         );
         
-                        // this transaction will belong to the transferred user
+                        
                         TRANSACTION receivedTransaction = new TRANSACTION(
                                 transferredUser.getId(),
                                 "Transfer",
@@ -199,15 +187,15 @@ public class MyJDBC {
                                 null
                         );
         
-                        // update transfer user
+                       
                         transferredUser.setCurrentBalance(transferredUser.getCurrentBalance().add(BigDecimal.valueOf(transferAmount)));
                         updateCurrentBalance(transferredUser);
         
-                        // update user current balance
+                     
                         user.setCurrentBalance(user.getCurrentBalance().subtract(BigDecimal.valueOf(transferAmount)));
                         updateCurrentBalance(user);
         
-                        // add these transactions to the database
+                        
                         addTransactionToDatabase(transferTransaction);
                         addTransactionToDatabase(receivedTransaction);
         
@@ -222,7 +210,7 @@ public class MyJDBC {
                 return false;
             }
         
-            // get all transactions (used for past transaction)
+            
             public static ArrayList<TRANSACTION> getPastTransaction(User user){
                 ArrayList<TRANSACTION> pastTransactions = new ArrayList<>();
                 try{
@@ -235,9 +223,9 @@ public class MyJDBC {
         
                     ResultSet resultSet = selectAllTransaction.executeQuery();
         
-                    // iterate throught the results (if any)
+                   
                     while(resultSet.next()){
-                        // create transaction obj
+                     
                         TRANSACTION transaction = new TRANSACTION(
                                 user.getId(),
                                 resultSet.getString("transaction_type"),
@@ -245,7 +233,7 @@ public class MyJDBC {
                                 resultSet.getDate("transaction_date")
                         );
         
-                        // store into array list
+                       
                         pastTransactions.add(transaction);
                     }
                 }catch(SQLException e){

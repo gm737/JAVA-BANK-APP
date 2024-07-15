@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import javax.swing.*;
 
 
-public class BANKAPPDIALOG extends JDialog implements ActionListener {
+public class BANKAPPINTERACTION extends JDialog implements ActionListener {
     private User user;
     private BANKAPPGUI bankingAppGui;
     private JLabel balanceLabel, enterAmountLabel, enterUserLabel;
@@ -16,7 +16,7 @@ public class BANKAPPDIALOG extends JDialog implements ActionListener {
     private JPanel pastTransactionPanel;
     private ArrayList<TRANSACTION> pastTransactions;
 
-    public BANKAPPDIALOG(BANKAPPGUI bankingAppGui, User user){
+    public BANKAPPINTERACTION(BANKAPPGUI bankingAppGui, User user){
       
         setSize(400, 400);
 
@@ -37,7 +37,6 @@ public class BANKAPPDIALOG extends JDialog implements ActionListener {
 
       
         this.bankingAppGui = bankingAppGui;
-      
 
         
         this.user = user;
@@ -148,39 +147,36 @@ public class BANKAPPDIALOG extends JDialog implements ActionListener {
 
         
 
-        //if(enterAmountField.equalsIgnoreCase=="String"){}
+      
         if(transactionType.equalsIgnoreCase("Deposit")){
-            // deposit transaction type
-            // add to current balance
+            
             user.setCurrentBalance(user.getCurrentBalance().add(new BigDecimal(amountVal)));
             
 
-            // create transaction
-            // we leave date null because we are going to be using the NOW() in sql which will get the current date
+            
             transaction = new TRANSACTION(user.getId(), transactionType, new BigDecimal(amountVal), null);
         }else{
-            // withdraw transaction type
-            // subtract from current balance
+            
             user.setCurrentBalance(user.getCurrentBalance().subtract(new BigDecimal(amountVal)));
 
-            // we want to show a negative sign for the amount val when withdrawing
+            
             transaction = new TRANSACTION(user.getId(), transactionType, new BigDecimal(-amountVal), null);
         }
 
       
-        // update database
-        if(amountVal<=0){
+     
+        if(amountVal<=0 ){
             JOptionPane.showMessageDialog(this, "Error: Negative input is not valid");
          }
          else{
             if(MyJDBC.addTransactionToDatabase(transaction) && MyJDBC.updateCurrentBalance(user)){
-                // show success dialog
+              
                 JOptionPane.showMessageDialog(this, transactionType + " Successfully!");
 
-                // reset the fields
+              
                 resetFieldsAndUpdateCurrentBalance();
             }else{
-                // show failure dialog
+               
                 JOptionPane.showMessageDialog(this, transactionType + " Failed...");
             }
          }
@@ -188,67 +184,63 @@ public class BANKAPPDIALOG extends JDialog implements ActionListener {
     }
 
     private void resetFieldsAndUpdateCurrentBalance(){
-        // reset fields
+        
         enterAmountField.setText("");
 
-        // only appears when transfer is clicked
+       
         if(enterUserField != null){
             enterUserField.setText("");
         }
 
-        // update current balance on dialog
+       
         balanceLabel.setText("Balance: $" + user.getCurrentBalance());
 
-        // update current balance on main gui
+        
         bankingAppGui.getCurrentBalanceField().setText("$" + user.getCurrentBalance());
     }
 
     private void handleTransfer(User user, String transferredUser, float amount){
-        // attempt to perform transfer
+        
         if(MyJDBC.transfer(user, transferredUser, amount)){
-            // show success dialog
+           
             JOptionPane.showMessageDialog(this, "Transfer Success!");
             resetFieldsAndUpdateCurrentBalance();
         }else{
-            // show failure dialog
+            
             JOptionPane.showMessageDialog(this, "Transfer Failed...");
         }
     }
 
-  
-
     @Override
     public void actionPerformed(ActionEvent e) {
         String buttonPressed = e.getActionCommand();
+       
+  
        
         try{
 
             float amountVal = Float.parseFloat(enterAmountField.getText());
 
             if(buttonPressed.equalsIgnoreCase("Deposit")){
-                // we want to handle the deposit transaction
+                
                 handleTransaction(buttonPressed, amountVal);
                
                
             }else{
-                // pressed withdraw or transfer
-    
-                // validate input by making sure that the withdraw or transfer amount is less than the current balance
-                // if the result is -1 it means that the entered amount is greater, 0 means they are equal and 1 means that
-                // the entered amount is less
+                
                 int result = user.getCurrentBalance().compareTo(BigDecimal.valueOf(amountVal));
-                if(result < 0)
+                if(result < 0) 
                 {
-                    // display an error dialog
+                
                     JOptionPane.showMessageDialog(this, "Error: Input value is more than current balance");
                     return;
                 }
     
-                // check to see if the withdraw- or transferbutton was pressed
+               
                 if(buttonPressed.equalsIgnoreCase("Withdraw")){
                     handleTransaction(buttonPressed, amountVal);
                 }else{
-                    // transfer
+                    
                     String transferredUser = enterUserField.getText();
     
                     
@@ -259,8 +251,8 @@ public class BANKAPPDIALOG extends JDialog implements ActionListener {
         }catch(NumberFormatException Exception){
                
                 JOptionPane.showMessageDialog(this, "Error: Invalid Input");
-            }      
-     
+            }
+
       }
       
   
