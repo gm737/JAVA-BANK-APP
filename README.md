@@ -9,7 +9,7 @@ https://dev.mysql.com/downloads/connector/j/
 ![SQL workbench](https://github.com/user-attachments/assets/1ec7bf0b-ac2a-406b-9e0a-58e63fab5ea1)
 
 
-create a new Database with name and password, make sure to remebmber your credentials.
+Create a new Database with name and password, make sure to remebmber your credentials.
 
 For this project, i created a database with the same name as the project.
 
