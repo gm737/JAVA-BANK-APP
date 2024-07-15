@@ -2,6 +2,9 @@ In Order to run the App following things must be commited:
 
 First install MySQL Connector/J latest version platform independent as ZIP file + SQL Workbench and set them up in your coding environment.
 
+Here is a download link for the programs:
+https://dev.mysql.com/downloads/connector/j/
+
 
 ![SQL workbench](https://github.com/user-attachments/assets/1ec7bf0b-ac2a-406b-9e0a-58e63fab5ea1)
 
