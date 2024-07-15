@@ -107,6 +107,8 @@ If the deposit was succesful, an message conforming the deposit will be displaye
 
 When no value is entered and the user tries to deposit, an error message appears.
 
+![Deposit empty input](https://github.com/user-attachments/assets/f3b4401a-0f7a-480e-b3a9-4cda3f7f9256)
+
 
 Next, we have the withdraw function.
 The user can withdraw any amount of money as long as it is less than the current balance.
