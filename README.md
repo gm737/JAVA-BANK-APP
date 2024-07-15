@@ -89,7 +89,7 @@ and for the password to be a simple 4 characters long.
 
 The user also has the option to return to the login, if already registered.
 
-For this demonstration i have created an Account with name of Max Mustermann and an  character Password
+For this demonstration i have created an Account with name of Max Mustermann and an 4 character Password
 
 ![rgstr fli](https://github.com/gm737/JAVA-Bank-App/assets/174362613/5aea2e87-fcad-4616-ad66-41627a472dd4)
 
