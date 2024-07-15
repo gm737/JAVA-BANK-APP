@@ -30,10 +30,10 @@ After you have done that and having the project code files in your coding enviro
 
 App should show up in a small window.
 
-For further description, check the "Project description" file i have added into the repository aswell.
 
 
 
+Next i will be going into further detail of the Project:
 
 
 
