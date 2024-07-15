@@ -7,7 +7,7 @@ For the Database i created a small database with MySQL and SQLWorkBench.
 
 The App functions by running any file from given directory, a ui opens up with login fields.
 
-![Screenshot 2024-07-04 074746]
+![Screenshot 2024-07-04 074746](https://github.com/gm737/JAVA-Bank-App/assets/174362613/b8bf85f6-af80-4359-9026-dc7e620e6413)
 
 The user also has the option of registering. 
 
