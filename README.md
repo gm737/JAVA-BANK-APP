@@ -85,11 +85,11 @@ The user also has the option of registering.
 
 
 Username and password have a set of rules where for the username the app checks if the name is available or not
-and for the password to be at least 8 characters long including numbers and symbols.
+and for the password to be a simple 4 characters long.
 
 The user also has the option to return to the login, if already registered.
 
-For this demonstration i have created an Account with name of Max Mustermann and an 8 character Password
+For this demonstration i have created an Account with name of Max Mustermann and an  character Password
 
 ![rgstr fli](https://github.com/gm737/JAVA-Bank-App/assets/174362613/5aea2e87-fcad-4616-ad66-41627a472dd4)
 
