@@ -33,7 +33,20 @@ App should show up in a small window.
 
 
 
+
+
+
+
 Next i will be going into further detail of the Project:
+
+
+
+
+
+
+
+
+
 
 
 
