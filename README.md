@@ -1,6 +1,6 @@
 In Order to run the App following things must be commited:
 
-First install MySQL, SQL Workbench and set them up in your Coding Environment.
+First install MySQL + SQL Workbench and set them up in your Coding Environment.
 
 
 ![SQL workbench](https://github.com/user-attachments/assets/1ec7bf0b-ac2a-406b-9e0a-58e63fab5ea1)
